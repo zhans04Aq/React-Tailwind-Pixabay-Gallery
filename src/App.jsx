@@ -26,14 +26,16 @@ function App() {
   },[term, FULL_PIXABAY_URL]);
 
   return (
-    <div className='max-w-screen-xl my-0 mx-auto'>
+    <div className='max-w-screen-xl my-0 mx-auto flex flex-col justify-center'>
       <Search
         searchText={text=> setTerm(text)}
       />
 
       {!isLoading && images.length ===0 && <h1 className="text-6xl text-center mx-auto mt-32">No images were found</h1> }
 
-      {isLoading?<h1 className="text-6xl text-center mx-auto mt-32">Loading</h1>:<div className="grid grid-cols-3 gap-4">
+      {isLoading
+      ?<h1 className="text-6xl text-center mx-auto mt-32">Loading</h1>
+      :<div className="grid justify-center grid-cols-1 gap-4 lg:grid-cols-2 xl:grid-cols-3 place-self-center">
         {
           images.map(image =>(
             <Card
